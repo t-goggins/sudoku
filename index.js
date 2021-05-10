@@ -5,10 +5,10 @@ import './index.css';
 /**
  * An individual square which contains a number 
  */
-function Square(){
+function Square(props){
   return (
     <button className="square">
-      X
+      {props.value}
     </button>
   );
 }
@@ -22,26 +22,27 @@ class Box extends React.Component {
     super(props);
 
     this.state = {
-      value: this.props.boxes
+      // TEST
+      values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
     }
   }
 
-  renderSquare() {
-    return <Square />
+  renderSquare(i) {
+    return <Square value={this.state.values[i]} />
   }
 
   render() {
     return (
       <div className="box">
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
-        {this.renderSquare()}
+        {this.renderSquare(0)}
+        {this.renderSquare(1)}
+        {this.renderSquare(2)}
+        {this.renderSquare(3)}
+        {this.renderSquare(4)}
+        {this.renderSquare(5)}
+        {this.renderSquare(6)}
+        {this.renderSquare(7)}
+        {this.renderSquare(8)}
       </div>
     );
   }
@@ -70,14 +71,13 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      boxes: Array(9).fill(null)
     }
   }
 
   render() {
     return (
       <div>
-        <Grid boxes={this.state.boxes}/>
+        <Grid />
       </div>
     );
   }
