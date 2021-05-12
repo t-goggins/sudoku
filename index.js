@@ -20,29 +20,24 @@ function Square(props){
 class Box extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      // TEST
-      values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    }
   }
 
   renderSquare(i) {
-    return <Square value={this.state.values[i]} />
+    return <Square value={i} />
   }
 
   render() {
     return (
       <div className="box">
-        {this.renderSquare(0)}
-        {this.renderSquare(1)}
-        {this.renderSquare(2)}
-        {this.renderSquare(3)}
-        {this.renderSquare(4)}
-        {this.renderSquare(5)}
-        {this.renderSquare(6)}
-        {this.renderSquare(7)}
-        {this.renderSquare(8)}
+        {this.renderSquare( this.props.value[0] ) }
+        {this.renderSquare( this.props.value[1] ) }
+        {this.renderSquare( this.props.value[2] ) }
+        {this.renderSquare( this.props.value[3] ) }
+        {this.renderSquare( this.props.value[4] ) }
+        {this.renderSquare( this.props.value[5] ) }
+        {this.renderSquare( this.props.value[6] ) }
+        {this.renderSquare( this.props.value[7] ) }
+        {this.renderSquare( this.props.value[8] ) }
       </div>
     );
   }
@@ -50,18 +45,23 @@ class Box extends React.Component {
 
 class Grid extends React.Component {
   /* A 9x9 Grid (made up of 9x Boxes) */
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="grid">
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
+        <Box value={this.props.value[0]}/>
+        <Box value={this.props.value[1]}/>
+        <Box value={this.props.value[2]}/>
+        <Box value={this.props.value[3]}/>
+        <Box value={this.props.value[4]}/>
+        <Box value={this.props.value[5]}/>
+        <Box value={this.props.value[6]}/>
+        <Box value={this.props.value[7]}/>
+        <Box value={this.props.value[8]}/>
       </div>
     );
   }
@@ -71,13 +71,24 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      value: [
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 'X', 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      ]
     }
   }
 
   render() {
     return (
       <div>
-        <Grid />
+        <Grid value={this.state.value}/>
       </div>
     );
   }
